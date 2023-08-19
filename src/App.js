@@ -22,16 +22,16 @@ function App() {
     <div className="">
       <Router>
         <NavBar />
-        <Footer />
+        {/* <Footer /> */}
         <main className="app" >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register /> } />
             <Route path="/login" element={<Login />} />
-            <Route path="/transactions" element={<Index />} />
-            <Route path="/transactions/new" element={<New />} />
-            <Route path="/transactions/:index" element={<Show />} />
-            <Route path="/transactions/:index/edit" element={<Edit />} />
+            <Route path="/blogs" element={<Index />} />
+            <Route path="/blogs/new" element={<New />} />
+            <Route path="/blogs/:index" element={<Show />} />
+            <Route path="/blogs/:index/edit" element={<Edit />} />
             <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>

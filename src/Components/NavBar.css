@@ -1,0 +1,19 @@
+nav{
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.link{
+    display: flex;
+    color: black;
+    text-decoration: none;
+    align-items: center;
+}
+
+.link:hover{
+    text-decoration:underline;
+
+}
