@@ -1,8 +1,9 @@
+import Blogs from "../Components/Blogs"
 
 
 function Index() {
   return (
-    <div>Index</div>
+    <Blogs />
   )
 }
 

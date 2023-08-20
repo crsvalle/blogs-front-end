@@ -1,0 +1,19 @@
+.new-form{
+    display: flex;
+    width: 90%;
+    margin: auto;
+
+}
+
+.left-box{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-right: 30px;
+}
+
+.boxOfText{
+    min-width: 400px;
+    height: 700px;
+    padding: 10px;
+}
