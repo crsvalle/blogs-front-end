@@ -1,0 +1,22 @@
+.infoPage{
+    width: 80%;
+    margin: auto;
+}
+img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.header{
+    display: flex;
+    gap:50px;
+    
+    .content{
+        flex:5
+    }
+
+    .info{
+        flex:2
+    }
+}
