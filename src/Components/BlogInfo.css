@@ -10,13 +10,15 @@ img{
 
 .header{
     display: flex;
-    gap:50px;
+    gap:10px;
     
     .content{
         flex:5
     }
 
     .info{
-        flex:2
+        flex:2;
+        padding:10px;
+        width: 100%;
     }
 }

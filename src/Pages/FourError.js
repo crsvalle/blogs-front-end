@@ -1,6 +1,6 @@
 
 export default function FourError() {
   return (
-    <div>FourError</div>
+    <div style={{margin:"auto", width:'50%'}}>Something is wrong</div>
   )
 }

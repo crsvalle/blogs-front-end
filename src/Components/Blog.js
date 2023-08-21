@@ -9,31 +9,32 @@ import "./Blog.css"
 import { Grid } from '@mui/material';
 
 function Blog({blog}) {
+    
   return (
     <Grid item xs={2} md={6} className='test'> 
     <CardActionArea component="a" href={`/blogs/${blog.id}`}>
-        <Card sx={{ display: 'flex'}}>
+        <Card  className="card" sx={{ display: 'flex'}}>
             <CardContent>
                 <CardMedia
                 component="img"
-                sx={{ width: 160, height:180, display: { xs: 'none', sm: 'block' } }}
+                sx={{ width: 50, height:50, display: { xs: 'none', sm: 'block' } }}
                 image={blog.image}
                 alt={blog.image} />
             </CardContent>
             <div>
                 <Typography component="h2" variant="h5">
-                {blog.title}
+                {blog.name}
             </Typography>
             <Typography variant="subtitle2" color="text.secondary">
                 {blog.author}
             </Typography>
-            <div className='' style={{overflow:"hidden", textOverflow:"ellipsis", width:500}}>
-                <Typography className="desc" variant="subtitle2" noWrap >
+            <div className='text'>
+                <Typography className="desc" variant="subtitle2" >
                     {blog.body}
                 </Typography>
             </div>
             <Typography variant="subtitle2" color="primary">
-                Continue reading...
+                Read More
             </Typography>
 
             </div>

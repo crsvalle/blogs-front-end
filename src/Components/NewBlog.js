@@ -1,7 +1,7 @@
-import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, Input, InputLabel, Radio, RadioGroup, TextField } from "@mui/material";
+import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, Input, Radio, RadioGroup } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 
 
 import './NewBlog.css'
@@ -15,16 +15,24 @@ function NewBlog() {
 
   const [value, setValue] = useState('');
 
+
+  const dat = new Date()
+  let currentDay = String(dat.getDate()).padStart(2,'0');
+  let currentMonth = String(dat.getMonth() +1).padStart(2,"0");
+  let currentYear = dat.getFullYear();
+  let currentDate = `${currentMonth}-${currentDay}-${currentYear}`
+
+
+
   const [blog, setBlog] = useState({
     name: "",
     image: "",
     author: "",
     body: "",
-    type: ""
+    type: "",
+    date: currentDate,
   });
 
-
-  
 
   const addBlog = (newBlog) => {
     axios
@@ -133,7 +141,6 @@ function NewBlog() {
                         onChange={handleTextChange}
                         placeholder="Write your text here"
                         style={{maxHeight:"400px", maxWidth:"450px"}}/>
-
                 </div>
             </div>
         </div>

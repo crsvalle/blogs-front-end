@@ -22,7 +22,6 @@ function App() {
     <div className="">
       <Router>
         <NavBar />
-        {/* <Footer /> */}
         <main className="app" >
           <Routes>
             <Route path="/" element={<Home />} />
@@ -35,6 +34,7 @@ function App() {
             <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>
+        <Footer />
       </Router>
     </div>
   );

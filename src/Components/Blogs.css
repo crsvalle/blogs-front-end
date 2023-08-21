@@ -1,0 +1,50 @@
+.box{
+    display: flex;
+
+}
+
+/* .blogs{
+    flex: .9;
+} */
+.sidebar{
+    margin-top: 10px;
+    flex: 0.1;
+}
+
+.sideBarRow{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.sideBarRow:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.sideBarTitle{
+    flex: 1;
+    margin-left: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sideBarIcon{
+    color: #606060;
+}
+
+.sideBarRow:hover > .sideBarIcon{
+    color: lightskyblue;
+}
+
+.sideBarRow:hover > .sideBarTitle{
+   font-weight: bold;
+}
+
+.sideBarRow.selected > .sideBarIcon{
+    color: lightskyblue;
+}
+
+.sideBarRow.selected > .sideBarTitle{
+    font-weight: bold;
+ }

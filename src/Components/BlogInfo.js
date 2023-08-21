@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import './BlogInfo.css'
-import { Button, Container } from '@mui/material';
+import { Button, Card, Container } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -38,15 +38,16 @@ function BlogInfo() {
             <div className='content'>
                 <img src={blog.image} />
             </div>
-            <div className='info'>
+            <Card className='info'>
             <h2> {blog.author}</h2>
             <p><span>Category:</span> {blog.type}</p>
+            <p>Posted on: {blog.date}</p>
             <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
                 <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
                 </Button>
             </Link>
             <Button variant='outlined' color="error" startIcon={<DeleteIcon />}>Delete</Button>
-            </div>
+            </Card>
         
 
         </div>
