@@ -5,7 +5,8 @@ import { Form, useNavigate } from "react-router-dom";
 
 
 import './NewBlog.css'
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'
 
 
 const API = process.env.REACT_APP_API_URL;
@@ -55,6 +56,9 @@ function NewBlog() {
     setBlog({...blog, type: event.target.value})
   }
 
+  const handleBodyChange = (value) =>{
+    setBlog({...blog, body: value})
+  }
 
 //   const handleCheckboxChange = () => {
 //     setBlog({ ...blog, is_favorite: !blog.is_favorite });
@@ -133,14 +137,7 @@ function NewBlog() {
             <div className="right-box"> 
                 <div>
                     <FormLabel htmlFor="body"></FormLabel>
-                        <textarea
-                        className="boxOfText"
-                        type="text"
-                        id="body"
-                        value={blog.body}
-                        onChange={handleTextChange}
-                        placeholder="Write your text here"
-                        style={{maxHeight:"400px", maxWidth:"450px"}}/>
+                       <ReactQuill className="quill" theme="snow" value={blog.body} onChange={handleBodyChange} />
                 </div>
             </div>
         </div>
@@ -151,8 +148,3 @@ function NewBlog() {
 }
 
 export default NewBlog;
-
-
-// import ReactQuill from 'react-quill';
-// import 'react-quill/dist/quill.snow.css'
-{/* <ReactQuill theme="snow" value={value} onChange={setValue} /> */}

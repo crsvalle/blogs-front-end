@@ -1,8 +1,12 @@
 import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, Input, Radio, RadioGroup } from "@mui/material";
 
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -10,8 +14,7 @@ const API = process.env.REACT_APP_API_URL;
 function EditBlog() {
     let { index } = useParams();
     let navigate = useNavigate();
-    console.log(index)
-
+    
     const [blog, setBlog] = useState({
         name: "",
         image: "",
@@ -47,6 +50,9 @@ function EditBlog() {
     
       const handleRadioChange = (event) => {
         setBlog({...blog, type: event.target.value})
+      }
+      const handleBodyChange = (value) =>{
+        setBlog({...blog, body: value})
       }
 
       const handleSubmit = (event) => {
@@ -120,15 +126,7 @@ function EditBlog() {
 
             <div className="right-box"> 
                 <div>
-                    <FormLabel htmlFor="body"></FormLabel>
-                        <textarea
-                        className="boxOfText"
-                        type="text"
-                        id="body"
-                        value={blog.body}
-                        onChange={handleTextChange}
-                        placeholder="Write your text here"
-                        style={{maxHeight:"400px", maxWidth:"450px"}}/>
+                  <ReactQuill className="quill" theme="snow" value={blog.body} onChange={handleBodyChange} />
 
                 </div>
             </div>

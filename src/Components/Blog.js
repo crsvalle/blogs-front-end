@@ -8,6 +8,8 @@ import CardMedia from '@mui/material/CardMedia';
 import "./Blog.css"
 import { Grid } from '@mui/material';
 
+
+
 function Blog({blog}) {
     
   return (

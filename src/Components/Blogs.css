@@ -1,15 +1,16 @@
 .box{
     display: flex;
-
 }
 
 
 .sidebar{
     margin-top: 10px;
     flex: 0.1;
-
 }
 
+.blogs{
+    flex: 0.9;
+}
 .sideBarRow{
     display: flex;
     align-items: center;

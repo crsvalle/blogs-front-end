@@ -55,11 +55,11 @@ function Blogs() {
             <div className={bool === 5 ? "sideBarRow selected ": 'sideBarRow'} onClick={() => sortBy('Food')}> <LocalDiningIcon  className='sideBarIcon'/><h2 className='sideBarTitle'>Food</h2></div>
             <div className={bool === 6 ? "sideBarRow selected ": 'sideBarRow'} onClick={() => sortBy('Travel')}><CardTravelIcon  className='sideBarIcon'/><h2 className='sideBarTitle'>Travel</h2></div>
         </div>
-        <div>
-        <Container className='blogs'>
-            <div>
+        <div className='blogs'>
+            <Container>
+            <div className='blog-box'>
                 {copy.length !== 0 ? 
-                   copy.map((blog)=> {
+                copy.map((blog)=> {
                     return <Blog key={blog.id} blog={blog} />
                 }):
                 <div>No blogs in this category</div>

@@ -7,13 +7,16 @@
 
 .left-box{
     display: flex;
+    flex: 0.3;
     flex-direction: column;
-    width: 30%;
     margin-right: 30px;
 }
 
-.boxOfText{
-    min-width: 400px;
-    height: 700px;
+.right-box{
+    flex: 0.7;
+}
+
+.quill{
+    height: 400px;
     padding: 10px;
 }
