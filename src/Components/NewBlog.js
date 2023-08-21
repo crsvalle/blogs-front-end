@@ -118,11 +118,11 @@ function NewBlog() {
                         name="controlled-radio-buttons-group"
                         onChange={handleRadioChange}
                         value={blog.type}>
-                            <FormControlLabel value="general" control={<Radio />} label="General" />
-                            <FormControlLabel value="games" control={<Radio />} label="Games" />
-                            <FormControlLabel value="food" control={<Radio />} label="Food" />
-                            <FormControlLabel value="travel" control={<Radio />} label="Travel" />
-                            <FormControlLabel value="movie" control={<Radio />} label="Movie" />
+                            <FormControlLabel value="General" control={<Radio />} label="General" />
+                            <FormControlLabel value="Games" control={<Radio />} label="Games" />
+                            <FormControlLabel value="Food" control={<Radio />} label="Food" />
+                            <FormControlLabel value="Travel" control={<Radio />} label="Travel" />
+                            <FormControlLabel value="Movie" control={<Radio />} label="Movie" />
                         </RadioGroup>
                     </FormControl>
                 </FormControl>

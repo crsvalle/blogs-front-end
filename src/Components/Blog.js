@@ -22,14 +22,14 @@ function Blog({blog}) {
                 alt={blog.image} />
             </CardContent>
             <div>
-                <Typography component="h2" variant="h5">
-                {blog.name}
-            </Typography>
-            <Typography variant="subtitle2" color="text.secondary">
-                {blog.author}
-            </Typography>
+                <Typography component="h3" variant="component">
+                    {blog.name}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                    {blog.author}
+                </Typography>
             <div className='text'>
-                <Typography className="desc" variant="subtitle2" >
+                <Typography className="desc" variant="caption" >
                     {blog.body}
                 </Typography>
             </div>

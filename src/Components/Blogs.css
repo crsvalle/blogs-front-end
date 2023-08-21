@@ -3,12 +3,11 @@
 
 }
 
-/* .blogs{
-    flex: .9;
-} */
+
 .sidebar{
     margin-top: 10px;
     flex: 0.1;
+
 }
 
 .sideBarRow{
@@ -20,6 +19,9 @@
 .sideBarRow:hover{
     background-color: lightgray;
     cursor: pointer;
+}
+.sideBarRow.selected{
+    background-color: lightgray;
 }
 
 .sideBarTitle{
@@ -43,6 +45,7 @@
 
 .sideBarRow.selected > .sideBarIcon{
     color: lightskyblue;
+    
 }
 
 .sideBarRow.selected > .sideBarTitle{
