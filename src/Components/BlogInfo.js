@@ -18,7 +18,6 @@ function BlogInfo() {
     const [blog, setBlog] = useState([])
     const [modal, setModal] = useState(false)
     let navigate = useNavigate();
-    let { id } = useParams();
     let {index} = useParams();
   
     useEffect(() => {
@@ -41,7 +40,7 @@ function BlogInfo() {
 
   return (
     <div className='infoPage'>
-      {modal ? <ModalWindow id={id} setModal={setModal} /> :null}
+      {modal ? <ModalWindow id={index} setModal={setModal} /> :null}
           {!blog.image 
           ? 
           <div className='noImageBody'>
@@ -50,8 +49,8 @@ function BlogInfo() {
                 {body}
             </div>
             <div className='header2'>
-              <Card className='info'>
-                <h2> {blog.author}</h2>
+              <Card className='info2'>
+                <Link style={{textDecoration:"none"}} to={`/user/${blog.author}`}><h3> {blog.author}</h3> </Link>
                 <p><span>Category:</span> {blog.type}</p>
                 <p>Posted on: {blog.date}</p>
                 <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
@@ -66,10 +65,10 @@ function BlogInfo() {
           <div>
              <div className='header'>
              <div className='content'>
-                 <img className="blogImage" src={blog.image} />
+                 <img className="blogImage" alt={blog.image} src={blog.image} />
              </div>
              <Card className='info'>
-             <h2> {blog.author}</h2>
+             <Link style={{textDecoration:"none"}} to={`/user/${blog.author}`}><h2> {blog.author}</h2> </Link>
              <p><span>Category:</span> {blog.type}</p>
              <p>Posted on: {blog.date}</p>
              <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>

@@ -1,0 +1,17 @@
+.userInfo{
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+
+.name{
+    font-size: xx-large;
+}
+
+.noPostError{
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}

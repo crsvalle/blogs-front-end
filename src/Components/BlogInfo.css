@@ -25,20 +25,22 @@
 
 .header2{
     display: flex;
-    flex:.2;
-    gap:10px;
+    flex-direction: column;
 
-    .info{
-        /* flex:; */
-        padding:10px;
-        width: 100%;
-    }
+}
+
+.info2{
+    right: 150px;
+    padding: 30px;
+    margin-left: 10px;
 }
 
 .noImageBody{
     display: flex;
+    flex: .1;
+    
 }
 
 .noImageTexts{
-    flex: .8;
+    flex: .9;
 }

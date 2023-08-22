@@ -1,7 +1,7 @@
-import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, Input, Radio, RadioGroup } from "@mui/material";
+import { Button, FormControl, FormControlLabel, FormLabel, Input, Radio, RadioGroup } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import {  useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 
 import './NewBlog.css'
@@ -14,15 +14,11 @@ const API = process.env.REACT_APP_API_URL;
 function NewBlog() {
   let navigate = useNavigate();
 
-  const [value, setValue] = useState('');
-
-
   const dat = new Date()
   let currentDay = String(dat.getDate()).padStart(2,'0');
   let currentMonth = String(dat.getMonth() +1).padStart(2,"0");
   let currentYear = dat.getFullYear();
   let currentDate = `${currentMonth}-${currentDay}-${currentYear}`
-
 
 
   const [blog, setBlog] = useState({
@@ -48,6 +44,8 @@ function NewBlog() {
   };
 
 
+
+
   const handleTextChange = (event) => {
     setBlog({ ...blog, [event.target.id]: event.target.value });
   };
@@ -59,11 +57,6 @@ function NewBlog() {
   const handleBodyChange = (value) =>{
     setBlog({...blog, body: value})
   }
-
-//   const handleCheckboxChange = () => {
-//     setBlog({ ...blog, is_favorite: !blog.is_favorite });
-//   };
-
 
 
   const handleSubmit = (event) => {

@@ -10,6 +10,7 @@ import New from "./Pages/New";
 import Show from "./Pages/Show";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
+import User from "./Pages/User";
 
 // COMPONENTS
 import NavBar from "./Components/NavBar";
@@ -31,6 +32,7 @@ function App() {
             <Route path="/blogs/new" element={<New />} />
             <Route path="/blogs/:index" element={<Show />} />
             <Route path="/blogs/:index/edit" element={<Edit />} />
+            <Route path="/user/:index" element={<User />} />
             <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>
