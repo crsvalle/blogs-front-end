@@ -19,20 +19,14 @@ function NavBar() {
    return (
     <nav role='prensentation'>
       <Breadcrumbs className="navItems"> 
-        <Button className="item">
           <Link className="link" to='/'>
-            <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> Home
+            <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME
           </Link>
-        </Button>
-        <Button className="navButton">
-            <Link className="link" to="/blogs/new">New blog</Link>
-        </Button>
-        <Button className="item">
-          <Link className="link" to="/blogs">More blogs</Link>
-        </Button>
+            <Link className="link" to="/blogs/new">NEW BLOG</Link>
+          <Link className="link" to="/blogs">MORE BLOGS</Link>
       </Breadcrumbs>
 
-      <div>
+      <div className='dashboard'>
         <Button id='basic-button'
         style={{color:"black"}}
         aria-controls={open ? 'basic-menu': undefined}
@@ -52,7 +46,6 @@ function NavBar() {
           <MenuItem onClick={handleClose}>Profile </MenuItem>
           <MenuItem onClick={handleClose}>My Account</MenuItem>
           <MenuItem onClick={handleClose}>Log out</MenuItem>
-
         </Menu>
       </div>
 

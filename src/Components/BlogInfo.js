@@ -51,14 +51,14 @@ function BlogInfo() {
             </div>
             <div className='header2'>
               <Card className='info'>
-              <h2> {blog.author}</h2>
-              <p><span>Category:</span> {blog.type}</p>
-              <p>Posted on: {blog.date}</p>
-              <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
-                  <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
-                  </Button>
-              </Link>
-              <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />}>Delete</Button>
+                <h2> {blog.author}</h2>
+                <p><span>Category:</span> {blog.type}</p>
+                <p>Posted on: {blog.date}</p>
+                <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
+                    <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
+                    </Button>
+                </Link>
+                <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />}>Delete</Button>
               </Card>
             </div>
          </div>

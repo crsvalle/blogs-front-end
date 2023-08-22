@@ -4,6 +4,7 @@ nav{
     justify-content: space-between;
     padding: 10px;
     align-items: center;
+
 }
 
 .link{
@@ -16,4 +17,8 @@ nav{
 .link:hover{
     text-decoration:underline;
 
+}
+
+.dashboard{
+    margin-top: 1px;
 }
