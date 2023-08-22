@@ -10,6 +10,7 @@ const API = process.env.REACT_APP_API_URL;
 
 function ModalWindow({id, setModal}) {
     let navigate = useNavigate();
+    
     const handleDelete = () => {
         axios
           .delete(`${API}/blogs/${id}`)
