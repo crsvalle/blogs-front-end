@@ -2,7 +2,7 @@
     width: 80%;
     margin: auto;
 }
-img{
+.blogImage{
     width: 100%;
     height: 300px;
     object-fit: cover;
@@ -21,4 +21,28 @@ img{
         padding:10px;
         width: 100%;
     }
+}
+
+.header2{
+    display: flex;
+    flex:.2;
+    gap:10px;
+    
+    .content{
+        flex:5
+    }
+
+    .info{
+        flex:2;
+        padding:10px;
+        width: 100%;
+    }
+}
+
+.noImageBody{
+    display: flex;
+}
+
+.noImageTexts{
+    flex: .8;
 }

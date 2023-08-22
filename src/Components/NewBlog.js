@@ -78,40 +78,41 @@ function NewBlog() {
                 <FormControl >
                     <FormLabel htmlFor="name"></FormLabel>
                     <FormControl>
-                        <Input
-                        id="name"
-                        value={blog.name}
-                        type="text"
-                        onChange={handleTextChange}
-                        placeholder="Title"
-                        required
-                        />
+                      <Input
+                      id="name"
+                      value={blog.name}
+                      type="text"
+                      onChange={handleTextChange}
+                      placeholder="Title"
+                      required
+                      />
                     </FormControl>
 
                     <br />
 
                     <FormControl>
                     <FormLabel htmlFor="image"></FormLabel>
-                    <Input
-                    id="image"
-                    type="text"
-                    pattern="http[s]*://.+"
-                    value={blog.image}
-                    placeholder="Image - http://"
-                    onChange={handleTextChange}
-                    />
+                      <Input
+                      id="image"
+                      type="text"
+                      pattern="http[s]*://.+"
+                      value={blog.image}
+                      placeholder="Image - http://"
+                      onChange={handleTextChange}
+                      />
                     </FormControl>
 
                     <br />
 
                     <FormControl>
                     <FormLabel htmlFor="author"></FormLabel>
-                    <Input
-                    id="author"
-                    type="text"
-                    placeholder="Author"
-                    onChange={handleTextChange}
-                    />
+                      <Input
+                      id="author"
+                      type="text"
+                      placeholder="Author"
+                      onChange={handleTextChange}
+                      required
+                      />
                     </FormControl>
                 
                     <br />

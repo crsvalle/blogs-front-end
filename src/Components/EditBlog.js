@@ -59,6 +59,7 @@ function EditBlog() {
         event.preventDefault()
         updateBlog(blog);
       };
+      
 
   return (
     <form className="new" onSubmit={handleSubmit}>
