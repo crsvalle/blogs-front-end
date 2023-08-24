@@ -9,6 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import parse from 'html-react-parser';
 import ModalWindow from './ModalWindow';
+import Comments from './Comments';
 
 
 const API = process.env.REACT_APP_API_URL; 
@@ -84,6 +85,8 @@ function BlogInfo() {
          </div>
          </div>
           }
+
+          <Comments key={blog.id} id={index}/>
     </div>
   )
 }

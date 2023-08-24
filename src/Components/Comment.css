@@ -1,0 +1,13 @@
+.deletButton{
+    display: flex;
+    justify-content: space-between;
+}
+.comment{
+    margin-top: 10px;
+    /* margin-bottom:25px; */
+    padding: 10px;
+}
+
+.comment:hover{
+    background-color: lightgrey;
+}

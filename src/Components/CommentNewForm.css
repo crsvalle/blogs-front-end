@@ -1,0 +1,38 @@
+.commentForm{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.nameForm{  
+    flex:.2;
+    margin-right: 18px;
+}
+
+.nameInput{
+    width: 95%;
+    padding: 10px;
+}
+
+.contentForm{
+    flex:.8;
+    margin-right: 10px;
+    display: flex;
+}
+
+.contentInput{
+    width: 100%;
+    padding: 10px;
+    margin-right: 12px;
+}
+
+.commentSubmit{
+    padding: 10px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 10px;
+}
+
+.commentSubmit:hover{
+    cursor: pointer;
+}

@@ -1,5 +1,9 @@
 
 
 export default function Home() {
-  return
+  // https://api.api-ninjas.com/v1/facts?limit=
+
+  return(
+    <div>Hello WOrld</div>
+  )
 }

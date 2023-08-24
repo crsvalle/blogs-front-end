@@ -17,6 +17,7 @@ import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 
 import "./App.css"
+import Comments from "./Components/Comments";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <main className="app" >
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/test" element={<Comments />} />
             <Route path="/register" element={<Register /> } />
             <Route path="/login" element={<Login />} />
             <Route path="/blogs" element={<Index />} />
