@@ -22,9 +22,19 @@ function CommentNew({addComment, id}) {
     date: currentTime,
   })
 
+  function clearForm(){
+    setComment({
+        blog_id: id, 
+        name: '',
+        content: '',
+        date: currentTime,
+    })
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     addComment(comment);
+    clearForm()
   };
 
   const handleTextChange = (event) => {

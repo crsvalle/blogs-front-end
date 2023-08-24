@@ -18,6 +18,7 @@ import Footer from "./Components/Footer";
 
 import "./App.css"
 import Comments from "./Components/Comments";
+import Results from "./Pages/Results";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/blogs/new" element={<New />} />
             <Route path="/blogs/:index" element={<Show />} />
             <Route path="/blogs/:index/edit" element={<Edit />} />
+            <Route path="/search/:searchItem" element={<Results/>} />
             <Route path="/user/:index" element={<User />} />
             <Route path="*" element={<FourOFour />} />
           </Routes>

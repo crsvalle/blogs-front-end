@@ -62,7 +62,7 @@ function Comments({id}) {
 
   return (
     <section className="comments">
-      <h2>Comments</h2>
+      <h3>Comments</h3>
 
       <CommentNew key={id} id={id} addComment={addComment}>
       </CommentNew>

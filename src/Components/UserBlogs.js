@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import Blog from './Blog';
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 import './UserBlog.css'
 const API = process.env.REACT_APP_API_URL;
@@ -28,7 +28,7 @@ function UserBlogs() {
             });
         }, [index, navigate]);
   return (
-    <div>
+    <Box sx={{minHeight:500}}>
         <div className='userInfo'>
             <p className='name'>{index}</p>
         </div>
@@ -46,7 +46,7 @@ function UserBlogs() {
             
             }
         </div>
-    </div>
+    </Box>
   )
 }
 

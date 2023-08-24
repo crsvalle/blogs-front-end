@@ -23,7 +23,7 @@ function NavBar() {
             <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME
           </Link>
             <Link className="link" to="/blogs/new">NEW BLOG</Link>
-          <Link className="link" to="/blogs">MORE BLOGS</Link>
+          <Link className="link" to="/blogs">ALL BLOGS</Link>
       </Breadcrumbs>
 
       <div className='dashboard'>
