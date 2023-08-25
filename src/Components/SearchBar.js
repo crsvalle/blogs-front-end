@@ -1,23 +1,29 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 
-function SearchBar() {
+import './SearchBar.css'
+
+function Search() {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(e){
+  function handleSubmit (e){
     e.preventDefault();
     navigate(`/search/${input}`)
   }
 
+
   return (
     <div>
-        <form onSubmit={handleSubmit}>
-            <input name={`search`} placeholder='Search...' onChange={e => setInput(e.target.value)} value={input}/>
-            <button>Search</button>
+        <form className='searchInput' onSubmit={handleSubmit}>
+            <input name={`search`} placeholder='Search for a blog' onChange={e => setInput(e.target.value)} value={input}/>
+              <Link to={`/search/${input}`}>
+                <SearchIcon className='inputButton'/>
+              </Link>
         </form>
     </div>
   )
 }
 
-export default SearchBar
+export default Search
