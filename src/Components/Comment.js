@@ -1,4 +1,4 @@
-import { Grid, colors } from "@mui/material";
+import { Grid } from "@mui/material";
 import './Comment.css'
 
 function Comment({ comment, handleDelete }) {

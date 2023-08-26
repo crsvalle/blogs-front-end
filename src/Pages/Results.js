@@ -18,7 +18,7 @@ function Results() {
         setBlogs(response.data)}
         )
         .catch((e) => console.error("catch", e));
-},[]);
+},[searchItem]);
 
 console.log(blogs)
   return (

@@ -1,5 +1,6 @@
 // DEPENDENCIES
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
 
 // PAGES
 import Edit from "./Pages/Edit";
@@ -19,6 +20,19 @@ import Footer from "./Components/Footer";
 import "./App.css"
 import Comments from "./Components/Comments";
 import Results from "./Pages/Results";
+import Dashboard from "./Pages/Dashboard";
+
+const PrivateRoutes = () => {
+  const { isAuth } = useSelector((state) => state.auth)
+
+  return <>{isAuth ? <Outlet /> : <Navigate to='/login' />}</>
+}
+
+const RestrictedRoutes = () => {
+  const { isAuth } = useSelector((state) => state.auth)
+
+  return <>{!isAuth ? <Outlet /> : <Navigate to='/dashboard' />}</>
+}
 
 function App() {
   return (
@@ -28,6 +42,16 @@ function App() {
         <main className="app" >
           <Routes>
             <Route path="/" element={<Home />} />
+
+            <Route element={<PrivateRoutes />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+
+            <Route element={<RestrictedRoutes />}>
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+            </Route>
+
             <Route path="/test" element={<Comments />} />
             <Route path="/register" element={<Register /> } />
             <Route path="/login" element={<Login />} />

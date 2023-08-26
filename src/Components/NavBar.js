@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import './NavBar.css'
 import { Breadcrumbs, Button, Menu, MenuItem } from '@mui/material'
@@ -8,6 +9,8 @@ import { useState } from 'react'
 function NavBar() {
   const [anchorEle, setAnchorEle] = useState(null);
   const open = Boolean(anchorEle);
+
+  const { isAuth } = useSelector((state) => state.auth)
 
   function handleClick (event){
     setAnchorEle(event.currentTarget)
@@ -36,17 +39,30 @@ function NavBar() {
         >
           Dashboard
         </Button>
-        <Menu id='basic-menu'
-        anchorEl={anchorEle}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}>
-          <MenuItem onClick={handleClose}>Profile </MenuItem>
-          <MenuItem onClick={handleClose}>My Account</MenuItem>
-          <MenuItem onClick={handleClose}>Log out</MenuItem>
-        </Menu>
+
+        {isAuth  ? 
+          <Menu id='basic-menu'
+          anchorEl={anchorEle}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}>
+            <MenuItem onClick={handleClose} component={Link} to='/dashboard'>Profile </MenuItem>
+            <MenuItem onClick={handleClose}>My Account</MenuItem>
+            <MenuItem onClick={handleClose}>Log out</MenuItem>
+          </Menu>
+          :
+          <Menu id='basic-menu'
+          anchorEl={anchorEle}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}>
+            <MenuItem onClick={handleClose} component={Link} to='/login'>Login </MenuItem>
+            <MenuItem onClick={handleClose} component={Link} to='/register'>Register</MenuItem>
+          </Menu>}
       </div>
 
     </nav>
