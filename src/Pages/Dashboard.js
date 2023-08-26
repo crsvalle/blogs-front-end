@@ -5,7 +5,7 @@ import { unauthenticateUser } from '../redux/slices/authSlice'
 
 const Dashboard = () => {
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [protectedData, setProtectedData] = useState(null)
 
   const logout = async () => {
@@ -14,6 +14,8 @@ const Dashboard = () => {
 
       dispatch(unauthenticateUser())
       localStorage.removeItem('isAuth')
+      localStorage.removeItem('id')
+      localStorage.removeItem('username')
     } catch (error) {
       console.log(error.response)
     }
@@ -33,7 +35,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     protectedInfo()
-  }, [protectedInfo])
+  }, [])
 
   return loading ? (
     <div>

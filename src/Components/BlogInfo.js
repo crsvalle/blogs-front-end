@@ -12,7 +12,7 @@ import ModalWindow from './ModalWindow';
 import Comments from './Comments';
 
 
-const API = process.env.REACT_APP_API_URL; 
+const API = process.env.REACT_APP_API_URL;
 
 
 function BlogInfo() {
@@ -20,6 +20,12 @@ function BlogInfo() {
     const [modal, setModal] = useState(false)
     let navigate = useNavigate();
     let {index} = useParams();
+
+    const getUserIDFromLocalStorage = () => {
+      return localStorage.getItem('id') || 'null'; // Change 'id' to the actual key
+    };
+
+    const userId = getUserIDFromLocalStorage()
   
     useEffect(() => {
       axios
@@ -38,6 +44,7 @@ function BlogInfo() {
 
     let body = parse(`${blog.body}`)
 
+    console.log(blog)
 
   return (
     <div className='infoPage'>
@@ -72,11 +79,16 @@ function BlogInfo() {
              <Link style={{textDecoration:"none"}} to={`/user/${blog.author}`}><h2> {blog.author}</h2> </Link>
              <p><span>Category:</span> {blog.type}</p>
              <p>Posted on: {blog.date}</p>
+             
+             {blog.author_id === userId ? 
+            <div>
+
              <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
-                 <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
-                 </Button>
-             </Link>
-             <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />}>Delete</Button>
+             <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
+             </Button>
+         </Link>
+         <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />}>Delete</Button> </div>: 
+         ''}
              </Card>
          </div>
          <div>

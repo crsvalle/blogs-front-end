@@ -1,16 +1,37 @@
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 import './NavBar.css'
 import { Breadcrumbs, Button, Menu, MenuItem } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home';
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { unauthenticateUser } from '../redux/slices/authSlice';
+import { onLogout } from '../api/auth';
 
 function NavBar() {
   const [anchorEle, setAnchorEle] = useState(null);
   const open = Boolean(anchorEle);
 
-  const { isAuth } = useSelector((state) => state.auth)
+  const { isAuth} = useSelector((state) => state.auth.isAuth)
+  console.log(isAuth )
+  const dispatch = useDispatch()
+
+
+  
+  const logout = async () => {
+    try {
+      await onLogout();
+  
+      dispatch(unauthenticateUser());
+      localStorage.setItem('isAuth', JSON.stringify(false));
+      localStorage.removeItem('id');
+      localStorage.removeItem('username');
+      window.location.reload();
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  
 
   function handleClick (event){
     setAnchorEle(event.currentTarget)
@@ -25,7 +46,7 @@ function NavBar() {
           <Link className="link" to='/'>
             <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME
           </Link>
-            <Link className="link" to="/blogs/new">NEW BLOG</Link>
+            {isAuth ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
           <Link className="link" to="/blogs">ALL BLOGS</Link>
       </Breadcrumbs>
 
@@ -50,7 +71,7 @@ function NavBar() {
           }}>
             <MenuItem onClick={handleClose} component={Link} to='/dashboard'>Profile </MenuItem>
             <MenuItem onClick={handleClose}>My Account</MenuItem>
-            <MenuItem onClick={handleClose}>Log out</MenuItem>
+            <MenuItem onClick={logout}>Log out</MenuItem>
           </Menu>
           :
           <Menu id='basic-menu'

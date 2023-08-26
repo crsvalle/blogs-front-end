@@ -9,8 +9,15 @@ export async function onRegistration(registrationData) {
 }
 
 export async function onLogin(loginData) {
-  return await axios.post('http://localhost:3003/users/login', loginData)
-}
+    try {
+      const response = await axios.post('http://localhost:3003/users/login', loginData);
+      console.log(response)
+      const { id, username } = response.data; // Assuming the data structure is correct
+      return { id, username };
+    } catch (error) {
+      throw error; // Rethrow the error to handle it in the component
+    }
+  }
 
 export async function onLogout() {
   return await axios.get('http://localhost:3003/users/logout')

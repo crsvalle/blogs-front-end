@@ -1,9 +1,17 @@
 import { useState } from "react";
-
 import './CommentNewForm.css'
+import { useSelector } from "react-redux";
 
 function CommentNew({addComment, id}) {
+    
+    const { isAuth} = useSelector((state) => state.auth.isAuth)
 
+    let username; 
+    const getUsernameFromLocalStorage = () => {
+        return localStorage.getItem('username') || 'No Username'; // Change 'username' to the actual key
+    };
+
+    username = getUsernameFromLocalStorage()
 
   const dat = new Date()
   let currentDay = String(dat.getDate()).padStart(2,'0');
@@ -14,10 +22,10 @@ function CommentNew({addComment, id}) {
 
   let currentTime = `${currentDate}  +${time}`
 
-
+  
   const [comment, setComment] = useState({
     blog_id: id, 
-    name: '',
+    name: username,
     content: '',
     date: currentTime,
   })
@@ -25,7 +33,7 @@ function CommentNew({addComment, id}) {
   function clearForm(){
     setComment({
         blog_id: id, 
-        name: '',
+        name: username,
         content: '',
         date: currentTime,
     })
@@ -44,7 +52,8 @@ function CommentNew({addComment, id}) {
 
   return (
     <div className="">
-      <form className="commentForm" onSubmit={handleSubmit}>
+        {isAuth ? 
+        <form className="commentForm" onSubmit={handleSubmit}>
         <div className="nameForm">
             <label htmlFor="name"></label>
             <input
@@ -54,10 +63,11 @@ function CommentNew({addComment, id}) {
             type="text"
             onChange={handleTextChange}
             placeholder="Username"
-            required
+            readOnly
             />
         </div>
 
+        {isAuth ? 
         <div className="contentForm"> 
             <label htmlFor="content"></label>
             <input
@@ -73,9 +83,58 @@ function CommentNew({addComment, id}) {
                 <input className="commentSubmit"type="submit" value="Comment"/>
             </div>
         </div>
+        :
+        <div className="contentForm"> 
+            <label htmlFor="content"></label>
+            <input
+            id="content"
+            className="contentInput"
+            value={comment.content}
+            type="comment"
+            onChange={handleTextChange}
+            placeholder="Not logged In"
+            readOnly
+            />
+            <div>
+                <input className="commentSubmit"type="submit" disabled value="Disabled"/>
+            </div>
+        </div>}
 
         <br />
       </form>
+        :
+        <form className="commentForm" onSubmit={handleSubmit}>
+        <div className="nameForm">
+            <label htmlFor="name"></label>
+            <input
+            className="nameInput"
+            id="name"
+            value={comment.name}
+            type="text"
+            onChange={handleTextChange}
+            placeholder="Username"
+            readOnly
+            />
+        </div>
+
+        <div className="contentForm"> 
+            <label htmlFor="content"></label>
+            <input
+            id="content"
+            className="contentInput"
+            value={comment.content}
+            type="comment"
+            onChange={handleTextChange}
+            placeholder="Not logged in"
+            readOnly
+            />
+            <div>
+                <input className="commentSubmit"type="submit" value="Comment"/>
+            </div>
+        </div>
+
+        <br />
+      </form>}
     </div>
   );
 }

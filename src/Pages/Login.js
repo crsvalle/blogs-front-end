@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { onLogin } from '../api/auth'
 import { useDispatch } from 'react-redux'
-import { authenticateUser } from '../redux/slices/authSlice'
+import { authenticateUser, updateUserInfo } from '../redux/slices/authSlice'
 
 function Login() {
   const [values, setValues] = useState({
@@ -19,10 +19,21 @@ function Login() {
     e.preventDefault()
 
     try {
-      await onLogin(values)
-      dispatch(authenticateUser())
+      const user = await onLogin(values);
+      console.log('User object:', user); // Check if user contains the expected data
+      
+      dispatch(authenticateUser());
+      console.log('authenticateUser dispatched');
+  
+      const { id, username } = user;
+      console.log('Dispatching updateUserInfo with id:', id, 'and username:', username);
+      dispatch(updateUserInfo({ id, username }));
+  
+      localStorage.setItem('isAuth', true);
+      localStorage.setItem('id', id);
+      localStorage.setItem('username', username );
+      window.location.reload();
 
-      localStorage.setItem('isAuth', 'true')
     } catch (error) {
       console.log(error.response.data.errors[0].msg)
       setError(error.response.data.errors[0].msg)
@@ -44,8 +55,8 @@ function Login() {
             className='form-control'
             id='username'
             name='username'
-            value={values.email}
-            placeholder='test@gmail.com'
+            value={values.username}
+            placeholder='username'
             required
           />
         </div>

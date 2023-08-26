@@ -9,7 +9,11 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 
 const API = process.env.REACT_APP_API_URL;
+const getUserIDFromLocalStorage = () => {
+  return localStorage.getItem('id') || 'null'; // Change 'id' to the actual key
+};
 
+const userId = getUserIDFromLocalStorage()
 
 function EditBlog() {
     let { index } = useParams();
@@ -60,81 +64,92 @@ function EditBlog() {
         updateBlog(blog);
       };
       
-
+      console.log(blog)
+      console.log(blog.author_id)
+      console.log(userId)
+      console.log(blog.author_id == userId)
   return (
-    <form className="new" onSubmit={handleSubmit}>
-        <div className="new-form">
-            <div className="left-box">
-                <FormControl >
-                    <FormLabel htmlFor="name"></FormLabel>
-                    <FormControl>
-                        <Input
-                        id="name"
-                        value={blog.name}
-                        type="text"
-                        onChange={handleTextChange}
-                        placeholder="Title"
-                        required
-                        />
-                    </FormControl>
+    <>
 
-                    <br />
+    {blog.author_id == userId ? (
+      <form className="new" onSubmit={handleSubmit}>
+          <div className="new-form">
+              <div className="left-box">
+                  <FormControl >
+                      <FormLabel htmlFor="name"></FormLabel>
+                      <FormControl>
+                          <Input
+                          id="name"
+                          value={blog.name}
+                          type="text"
+                          onChange={handleTextChange}
+                          placeholder="Title"
+                          required
+                          />
+                      </FormControl>
 
-                    <FormControl>
-                    <FormLabel htmlFor="image"></FormLabel>
-                    <Input
-                    id="image"
-                    type="text"
-                    pattern="http[s]*://.+"
-                    value={blog.image}
-                    placeholder="Image - http://"
-                    onChange={handleTextChange}
-                    />
-                    </FormControl>
+                      <br />
 
-                    <br />
+                      <FormControl>
+                      <FormLabel htmlFor="image"></FormLabel>
+                      <Input
+                      id="image"
+                      type="text"
+                      pattern="http[s]*://.+"
+                      value={blog.image}
+                      placeholder="Image - http://"
+                      onChange={handleTextChange}
+                      />
+                      </FormControl>
 
-                    <FormControl>
-                    <FormLabel htmlFor="author"></FormLabel>
-                    <Input
-                    id="author"
-                    type="text"
-                    value={blog.author}
-                    placeholder="Author"
-                    onChange={handleTextChange}
-                    />
-                    </FormControl>
-                
-                    <br />
+                      <br />
 
-                    <FormControl>
-                        <FormLabel htmlFor="type"></FormLabel>
-                        <RadioGroup
-                        name="controlled-radio-buttons-group"
-                        onChange={handleRadioChange}
-                        value={blog.type}>
-                            <FormControlLabel value="General" control={<Radio />} label="General" />
-                            <FormControlLabel value="Games" control={<Radio />} label="Games" />
-                            <FormControlLabel value="Food" control={<Radio />} label="Food" />
-                            <FormControlLabel value="Travel" control={<Radio />} label="Travel" />
-                            <FormControlLabel value="Movie" control={<Radio />} label="Movie" />
-                        </RadioGroup>
-                    </FormControl>
-                </FormControl>
-                
-                <Button type="submit" >submit</Button>
-            </div>
+                      <FormControl>
+                      <FormLabel htmlFor="author"></FormLabel>
+                      <Input
+                      id="author"
+                      type="text"
+                      value={blog.author}
+                      placeholder="Author"
+                      onChange={handleTextChange}
+                      />
+                      </FormControl>
+                  
+                      <br />
 
-            <div className="right-box"> 
-                <div>
-                  <ReactQuill className="quill" theme="snow" value={blog.body} onChange={handleBodyChange} />
+                      <FormControl>
+                          <FormLabel htmlFor="type"></FormLabel>
+                          <RadioGroup
+                          name="controlled-radio-buttons-group"
+                          onChange={handleRadioChange}
+                          value={blog.type}>
+                              <FormControlLabel value="General" control={<Radio />} label="General" />
+                              <FormControlLabel value="Games" control={<Radio />} label="Games" />
+                              <FormControlLabel value="Food" control={<Radio />} label="Food" />
+                              <FormControlLabel value="Travel" control={<Radio />} label="Travel" />
+                              <FormControlLabel value="Movie" control={<Radio />} label="Movie" />
+                          </RadioGroup>
+                      </FormControl>
+                  </FormControl>
+                  
+                  <Button type="submit" >submit</Button>
+              </div>
 
-                </div>
-            </div>
-        </div>
+              <div className="right-box"> 
+                  <div>
+                    <ReactQuill className="quill" theme="snow" value={blog.body} onChange={handleBodyChange} />
 
-        <br />
-    </form>
+                  </div>
+              </div>
+          </div>
+
+          <br />
+      </form>)
+      :
+      "Nothing to find here"
+
+    }
+    </>
   )
 }
 

@@ -14,6 +14,18 @@ const API = process.env.REACT_APP_API_URL;
 function NewBlog() {
   let navigate = useNavigate();
 
+  const getUsernameFromLocalStorage = () => {
+    return localStorage.getItem('username') || 'null'; // Change 'username' to the actual key
+};
+
+    const getUserIDFromLocalStorage = () => {
+      return localStorage.getItem('id') || 'null'; // Change 'id' to the actual key
+    };
+
+let username = getUsernameFromLocalStorage()
+let authorId = getUserIDFromLocalStorage()
+console.log(authorId)
+
   const dat = new Date()
   let currentDay = String(dat.getDate()).padStart(2,'0');
   let currentMonth = String(dat.getMonth() +1).padStart(2,"0");
@@ -22,9 +34,10 @@ function NewBlog() {
 
 
   const [blog, setBlog] = useState({
+    author_id: authorId,
     name: "",
     image: "",
-    author: "",
+    author: username,
     body: "",
     type: "",
     date: currentDate,
@@ -32,6 +45,9 @@ function NewBlog() {
 
 
   const addBlog = (newBlog) => {
+    const authorId = getUserIDFromLocalStorage();
+    console.log(authorId)
+    newBlog.author_id = authorId;
     axios
       .post(`${API}/blogs`, newBlog)
       .then(
@@ -103,8 +119,9 @@ function NewBlog() {
                       id="author"
                       type="text"
                       placeholder="Author"
-                      onChange={handleTextChange}
-                      required
+                      value={blog.author}
+                      
+                      readOnly
                       />
                     </FormControl>
                 
