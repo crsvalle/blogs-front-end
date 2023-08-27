@@ -27,6 +27,9 @@ function NavBar() {
       await onLogout();
       
       dispatch(unauthenticateUser());
+      localStorage.removeItem('isAuth');
+      localStorage.removeItem('username')
+      localStorage.removeItem('id')
       navigate('/login')
     } catch (error) {
       console.log(error.response);
