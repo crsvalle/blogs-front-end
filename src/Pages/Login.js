@@ -29,9 +29,9 @@ function Login() {
       console.log('Dispatching updateUserInfo with id:', id, 'and username:', username);
       dispatch(updateUserInfo({ id, username }));
   
-      // localStorage.setItem('isAuth', true);
-      // localStorage.setItem('id', id);
-      // localStorage.setItem('username', username );
+      localStorage.setItem('isAuth', true);
+      localStorage.setItem('id', id);
+      localStorage.setItem('username', username );
       // window.location.reload();
 
     } catch (error) {

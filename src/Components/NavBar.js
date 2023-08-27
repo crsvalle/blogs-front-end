@@ -28,9 +28,9 @@ function NavBar() {
       await onLogout();
       
       dispatch(unauthenticateUser());
-      // localStorage.removeItem('isAuth');
-      // localStorage.removeItem('username')
-      // localStorage.removeItem('id')
+      localStorage.removeItem('isAuth');
+      localStorage.removeItem('username')
+      localStorage.removeItem('id')
       navigate('/login')
     } catch (error) {
       console.log(error.response);
@@ -51,7 +51,7 @@ function NavBar() {
           <Link className="link" to='/'>
             <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME
           </Link>
-            {isAuth.id !== null ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
+            {isAuth ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
           <Link className="link" to="/blogs">ALL BLOGS</Link>
       </Breadcrumbs>
 
@@ -66,7 +66,7 @@ function NavBar() {
           Dashboard
         </Button>
 
-        { isAuth.id !== null  ? 
+        { isAuth  ? 
           <Menu id='basic-menu'
           anchorEl={anchorEle}
           open={open}
