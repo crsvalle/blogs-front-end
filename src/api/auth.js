@@ -1,16 +1,17 @@
 import axios from 'axios'
+const API = process.env.REACT_APP_API_URL;
 axios.defaults.withCredentials = true
 
 export async function onRegistration(registrationData) {
   return await axios.post(
-    'https://blogs-and.onrender.com/users/register',
+    `${API}/users/register`,
     registrationData
   )
 }
 
 export async function onLogin(loginData) {
     try {
-      const response = await axios.post('https://blogs-and.onrender.com/users/login', loginData);
+      const response = await axios.post(`${API}/users/login, loginData`);
       console.log(response)
       const { id, username } = response.data; // Assuming the data structure is correct
       return { id, username };
@@ -20,9 +21,9 @@ export async function onLogin(loginData) {
   }
 
 export async function onLogout() {
-  return await axios.get('https://blogs-and.onrender.com/users/logout')
+  return await axios.get(`${API}/users/logout`)
 }
 
 export async function fetchProtectedInfo() {
-  return await axios.get('https://blogs-and.onrender.com/users/protected')
+  return await axios.get(`${API}/users/protected`)
 }
