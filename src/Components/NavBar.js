@@ -27,12 +27,12 @@ function NavBar() {
     localStorage.setItem('isAuth', JSON.stringify(false));
     localStorage.removeItem('username')
     localStorage.removeItem('id')
+    window.location.reload();
     try {
       await onLogout();
       
       dispatch(unauthenticateUser());
 
-      window.location.reload();
     } catch (error) {
       console.log(error.response);
     }
