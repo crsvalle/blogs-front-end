@@ -24,9 +24,8 @@
 
   const PrivateRoutes = () => {
     const { isAuth } = useSelector((state) => state.auth);
-
   
-    return <>{isAuth.isAuth ? <Outlet /> : <Navigate to="/login" />}</>;
+    return <>{isAuth.isAuth || isAuth.id ===null ? <Outlet /> : <Navigate to="/login" />}</>;
   };
   
   const RestrictedRoutes = () => {

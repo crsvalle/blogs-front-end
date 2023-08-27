@@ -12,8 +12,9 @@ function NavBar() {
   const [anchorEle, setAnchorEle] = useState(null);
   const open = Boolean(anchorEle);
 
-  const { isAuth} = useSelector((state) => state.auth.isAuth)
-  console.log(isAuth )
+  const { isAuth} = useSelector((state) => state.auth)
+
+
   const dispatch = useDispatch()
 
 
