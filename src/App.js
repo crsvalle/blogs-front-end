@@ -23,14 +23,15 @@
   import Dashboard from "./Pages/Dashboard";
 
   const PrivateRoutes = () => {
-    const { isAuth } = useSelector((state) => state.auth);
+    const { isAuth } = useSelector((state) => state.auth, []);
+
     console.log(isAuth)
   
-    return <>{isAuth.isAuth || !isAuth.username || isAuth.id === null ? <Outlet /> : <Navigate to="/login" />}</>;
+    return <>{isAuth ? <Outlet /> : <Navigate to="/login" />}</>;
   };
   
   const RestrictedRoutes = () => {
-    const { isAuth } = useSelector((state) => state.auth);
+    const { isAuth } = useSelector((state) => state.auth, []);
   
     return <>{!isAuth.isAuth ? <Outlet /> : <Navigate to="/dashboard" />}</>;
   };

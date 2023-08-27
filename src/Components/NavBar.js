@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import './NavBar.css'
 import { Breadcrumbs, Button, Menu, MenuItem } from '@mui/material'
@@ -17,6 +17,7 @@ function NavBar() {
 
   const dispatch = useDispatch()
 
+  const navigate = useNavigate();
 
   
   const logout = async () => {
@@ -24,10 +25,7 @@ function NavBar() {
       await onLogout();
       
       dispatch(unauthenticateUser());
-      localStorage.setItem('isAuth', JSON.stringify(false));
-      localStorage.removeItem('id');
-      localStorage.removeItem('username');
-      window.location.reload();
+      navigate('/login')
     } catch (error) {
       console.log(error.response);
     }
