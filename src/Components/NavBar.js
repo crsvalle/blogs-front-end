@@ -51,7 +51,7 @@ function NavBar() {
           <Link className="link" to='/'>
             <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME
           </Link>
-            {isAuth.id === null ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
+            {!isAuth.id === null ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
           <Link className="link" to="/blogs">ALL BLOGS</Link>
       </Breadcrumbs>
 
@@ -66,7 +66,7 @@ function NavBar() {
           Dashboard
         </Button>
 
-        { isAuth.id === null  ? 
+        { !isAuth.id === null  ? 
           <Menu id='basic-menu'
           anchorEl={anchorEle}
           open={open}
