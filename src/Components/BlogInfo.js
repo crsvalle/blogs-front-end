@@ -26,6 +26,7 @@ function BlogInfo() {
     };
 
     const userId = getUserIDFromLocalStorage()
+    console.log(userId)
   
     useEffect(() => {
       axios
@@ -44,7 +45,7 @@ function BlogInfo() {
 
     let body = parse(`${blog.body}`)
 
-    console.log(blog)
+    console.log(blog.author_id === userId)
 
   return (
     <div className='infoPage'>
@@ -61,11 +62,17 @@ function BlogInfo() {
                 <Link style={{textDecoration:"none"}} to={`/user/${blog.author}`}><h3> {blog.author}</h3> </Link>
                 <p><span>Category:</span> {blog.type}</p>
                 <p>Posted on: {blog.date}</p>
-                <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
-                    <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
-                    </Button>
-                </Link>
-                <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />}>Delete</Button>
+                { blog.author_id === userId  ? 
+            <div>
+             <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
+             <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
+             </Button>
+              </Link>
+              <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />} >
+                Delete
+              </Button> 
+         </div>: 
+         ''}
               </Card>
             </div>
          </div>
@@ -80,14 +87,16 @@ function BlogInfo() {
              <p><span>Category:</span> {blog.type}</p>
              <p>Posted on: {blog.date}</p>
              
-             {blog.author_id === userId ? 
+             { blog.author_id === userId  ? 
             <div>
-
              <Link className="link" style={{textDecoration:'none'}} to={`/blogs/${index}/edit`}>
              <Button variant='outlined' color="info" startIcon={<EditIcon />}> Edit
              </Button>
-         </Link>
-         <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />}>Delete</Button> </div>: 
+              </Link>
+              <Button variant='outlined' color="error" onClick={handleModal} startIcon={<DeleteIcon />} >
+                Delete
+              </Button> 
+         </div>: 
          ''}
              </Card>
          </div>

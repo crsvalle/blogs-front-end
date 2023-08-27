@@ -14,6 +14,7 @@ const getUserIDFromLocalStorage = () => {
 };
 
 const userId = getUserIDFromLocalStorage()
+console.log(userId)
 
 function EditBlog() {
     let { index } = useParams();
