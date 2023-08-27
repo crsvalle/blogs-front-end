@@ -27,13 +27,13 @@
 
     console.log(isAuth.isAuth)
   
-    return <>{isAuth.isAuth || isAuth.id? <Outlet /> : <Navigate to="/login" />}</>;
+    return <>{isAuth.id? <Outlet /> : <Navigate to="/login" />}</>;
   };
   
   const RestrictedRoutes = () => {
     const { isAuth } = useSelector((state) => state.auth, []);
   
-    return <>{!isAuth.isAuth ? <Outlet /> : <Navigate to="/dashboard" />}</>;
+    return <>{!isAuth.id ? <Outlet /> : <Navigate to="/dashboard" />}</>;
   };
   function App() {
 
