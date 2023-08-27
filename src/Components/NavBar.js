@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './NavBar.css'
 import { Breadcrumbs, Button, Menu, MenuItem } from '@mui/material'
@@ -19,8 +19,6 @@ function NavBar() {
 
 
   const dispatch = useDispatch()
-
-  const navigate = useNavigate();
 
   
   const logout = async () => {
@@ -47,7 +45,7 @@ function NavBar() {
     setAnchorEle(null);
   }
    return (
-    <nav role='prensentation'>
+    <nav role='navigation'>
       <Breadcrumbs className="navItems"> 
           <Link className="link" to='/'>
             <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME

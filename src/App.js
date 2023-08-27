@@ -22,6 +22,7 @@
   import Results from "./Pages/Results";
   import Dashboard from "./Pages/Dashboard";
 import { useEffect } from "react";
+import { Box } from "@mui/material";
 
   const PrivateRoutes = () => {
     const { isAuth } = useSelector((state) => state.auth);
@@ -43,7 +44,7 @@ import { useEffect } from "react";
     },[isAuth])
 
     return (
-      <div className="">
+      <Box className="">
         <Router>
           <NavBar />
           <main className="app" >
@@ -73,7 +74,7 @@ import { useEffect } from "react";
           </main>
           <Footer />
         </Router>
-      </div>
+      </Box>
     );
   }
 

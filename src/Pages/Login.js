@@ -3,6 +3,7 @@ import { onLogin } from '../api/auth'
 import { useDispatch } from 'react-redux'
 import { authenticateUser, updateUserInfo } from '../redux/slices/authSlice'
 import {  useNavigate } from 'react-router-dom'
+import { Box, Container, Paper, TextField, Typography, Button } from '@mui/material';
 
 function Login() {
   const [values, setValues] = useState({
@@ -42,49 +43,44 @@ function Login() {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => onSubmit(e)} className='container mt-3'>
-        <h1>Login</h1>
-
-        <div className='mb-3'>
-          <label htmlFor='username' className='form-label'>
-            username 
-          </label>
-          <input
-            onChange={(e) => onChange(e)}
-            type='username'
-            className='form-control'
-            id='username'
-            name='username'
-            value={values.username}
-            placeholder='username'
-            required
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='password' className='form-label'>
-            Password
-          </label>
-          <input
-            onChange={(e) => onChange(e)}
-            type='password'
-            value={values.password}
-            className='form-control'
-            id='password'
-            name='password'
-            placeholder='passwod'
-            required
-          />
-        </div>
-
-        <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>
-
-        <button type='submit' className='btn btn-primary'>
-          Submit
-        </button>
-      </form>
-    </div>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '500px' }}>
+        <Container component="main" maxWidth="xs"sx={{marginBottom: '200px', marginTop: '100px'}}>
+          <Paper elevation={3} sx={{ padding: 3, borderRadius: 4 }}>
+            <Typography variant="h5" align="center" gutterBottom>
+              Login
+            </Typography>
+            <form onSubmit={(e) => onSubmit(e)}>
+              <TextField
+                label="Username"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                name="username"
+                value={values.username}
+                onChange={(e) => onChange(e)}
+                required
+              />
+              <TextField
+                label="Password"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="password"
+                name="password"
+                value={values.password}
+                onChange={(e) => onChange(e)}
+                required
+              />
+              <Typography variant="body2" sx={{ color: 'red', marginY: 1 }}>
+                {error}
+              </Typography>
+              <Button variant="contained" color="primary" fullWidth type="submit">
+                Submit
+              </Button>
+            </form>
+          </Paper>
+        </Container>
+      </Box>
   )
 }
 

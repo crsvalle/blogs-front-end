@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { onRegistration } from '../api/auth'
+import { Box, Container, Paper, TextField, Typography, Button } from '@mui/material';
 
 
 function Register() {
@@ -30,50 +31,49 @@ function Register() {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => onSubmit(e)} className='container mt-3'>
-        <h1>Register</h1>
-
-        <div className='mb-3'>
-          <label htmlFor='username' className='form-label'>
-            Username
-          </label>
-          <input
-            onChange={(e) => onChange(e)}
-            type='text'
-            className='form-control'
-            id='username'
-            name='username'
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  minHeight: '500px' }}>
+    <Container component="main" maxWidth="xs" sx={{marginBottom: '200px', marginTop: '100px'}}>
+      <Paper elevation={3} sx={{ padding: 3, borderRadius: 4 }}>
+        <Typography variant="h5" align="center" gutterBottom>
+          Register
+        </Typography>
+        <form onSubmit={(e) => onSubmit(e)}>
+          <TextField
+            label="Username"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            name="username"
             value={values.username}
-            placeholder='user'
-            required
-          />
-        </div>
-
-        <div className='mb-3'>
-          <label htmlFor='password' className='form-label'>
-            Password
-          </label>
-          <input
             onChange={(e) => onChange(e)}
-            type='password'
-            value={values.password}
-            className='form-control'
-            id='password'
-            name='password'
-            placeholder='password'
+            placeholder="Username"
             required
           />
-        </div>
-
-        <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>
-        <div style={{ color: 'green', margin: '10px 0' }}>{success}</div>
-
-        <button type='submit' className='btn btn-primary'>
-          Submit
-        </button>
-      </form>
-    </div>
+          <TextField
+            label="Password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            type="password"
+            name="password"
+            value={values.password}
+            onChange={(e) => onChange(e)}
+            placeholder="Password"
+            required
+          />
+          <Typography variant="body2" sx={{ color: 'red', marginY: 1 }}>
+            {error}
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'green', marginY: 1 }}>
+            {success}
+          </Typography>
+          <Button variant="contained" color="primary" fullWidth type="submit">
+            Submit
+          </Button>
+        </form>
+      </Paper>
+    </Container>
+  </Box>
   )
 }
 

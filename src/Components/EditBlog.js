@@ -1,4 +1,4 @@
-import { Button, FormControl, FormControlLabel, FormHelperText, FormLabel, Input, Radio, RadioGroup } from "@mui/material";
+import { Button, FormControl, FormControlLabel, FormLabel, Input, Radio, RadioGroup } from "@mui/material";
 
 
 import axios from 'axios';
@@ -14,7 +14,7 @@ const getUserIDFromLocalStorage = () => {
 };
 
 const userId = getUserIDFromLocalStorage()
-console.log(userId)
+
 
 function EditBlog() {
     let { index } = useParams();
@@ -64,15 +64,11 @@ function EditBlog() {
         event.preventDefault()
         updateBlog(blog);
       };
-      
-      console.log(blog)
-      console.log(blog.author_id)
-      console.log(userId)
-      console.log(blog.author_id == userId)
+    
   return (
     <>
 
-    {blog.author_id == userId ? (
+    {blog.author_id + '' === userId ? (
       <form className="new" onSubmit={handleSubmit}>
           <div className="new-form">
               <div className="left-box">

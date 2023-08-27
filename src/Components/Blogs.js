@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import * as React from 'react';
 import './Blogs.css'
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 
 import GamesIcon from '@mui/icons-material/Games';
 import TheatersIcon from '@mui/icons-material/Theaters';
@@ -46,7 +46,7 @@ function Blogs() {
     }
 
     return (
-    <div className='box'>
+    <Box sx={{ minHeight:500}} className='box'>
         <div className='sidebar'>
             <div className={bool === 0 ? "sideBarRow selected ": 'sideBarRow'} onClick={getAll}><RectangleOutlinedIcon className='sideBarIcon' /><h2 className='sideBarTitle'>All</h2></div>
             <div className={bool === 2 ? "sideBarRow selected ": 'sideBarRow'} onClick={() => sortBy('General')}><ForumIcon className='sideBarIcon' /><h2 className='sideBarTitle'>General</h2></div>
@@ -67,7 +67,7 @@ function Blogs() {
             </div>
         </Container>
         </div>
-    </div>
+    </Box>
     )
 }
 
