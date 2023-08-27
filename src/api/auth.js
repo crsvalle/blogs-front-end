@@ -11,7 +11,7 @@ export async function onRegistration(registrationData) {
 
 export async function onLogin(loginData) {
     try {
-      const response = await axios.post(`${API}/users/login, ${loginData}`);
+      const response = await axios.post(`${API}/users/login`, loginData);
       console.log(response)
       const { id, username } = response.data; // Assuming the data structure is correct
       return { id, username };
