@@ -14,6 +14,7 @@ function NavBar() {
 
   const { isAuth } = useSelector((state) => state.auth, []);
   console.log('isAuth from Redux:', isAuth.isAuth);
+  console.log('id from redux: ', isAuth.id)
 
 
 
@@ -50,7 +51,7 @@ function NavBar() {
           <Link className="link" to='/'>
             <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME
           </Link>
-            {isAuth.isAuth ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
+            {isAuth.isAuth || isAuth.id === null ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
           <Link className="link" to="/blogs">ALL BLOGS</Link>
       </Breadcrumbs>
 
@@ -65,7 +66,7 @@ function NavBar() {
           Dashboard
         </Button>
 
-        {isAuth.isAuth  ? 
+        {isAuth.isAuth || isAuth.id === null  ? 
           <Menu id='basic-menu'
           anchorEl={anchorEle}
           open={open}
