@@ -12,7 +12,7 @@ function NavBar() {
   const [anchorEle, setAnchorEle] = useState(null);
   const open = Boolean(anchorEle);
 
-  const { isAuth} = useSelector((state) => state.auth)
+  const { isAuth } = useSelector((state) => state.auth, []);
 
 
   const dispatch = useDispatch()
@@ -47,7 +47,7 @@ function NavBar() {
           <Link className="link" to='/'>
             <HomeIcon sx={{mr:0.5}} fontSize='inherit'/> HOME
           </Link>
-            {isAuth || isAuth.id === null || !isAuth.username ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
+            {isAuth ? <Link className="link" to="/blogs/new">NEW BLOG</Link>  : "" }
           <Link className="link" to="/blogs">ALL BLOGS</Link>
       </Breadcrumbs>
 
@@ -62,7 +62,7 @@ function NavBar() {
           Dashboard
         </Button>
 
-        {isAuth || isAuth.id === null || !isAuth.username  ? 
+        {isAuth  ? 
           <Menu id='basic-menu'
           anchorEl={anchorEle}
           open={open}
