@@ -32,7 +32,7 @@ function NavBar() {
       
       dispatch(unauthenticateUser());
 
-      navigate('/login')
+      window.location.reload();
     } catch (error) {
       console.log(error.response);
     }
