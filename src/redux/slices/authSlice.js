@@ -20,12 +20,7 @@ const userAuthFromLocalStorage = () => {
   };
 }
 
-
-const initialState = {
-  isAuth: userAuthFromLocalStorage(),
-  id: null,
-  username: null,
-}
+const initialState = userAuthFromLocalStorage()
 
 export const authSlice = createSlice({
     name: 'auth',

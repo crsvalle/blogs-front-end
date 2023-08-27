@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { onLogin } from '../api/auth'
 import { useDispatch } from 'react-redux'
 import { authenticateUser, updateUserInfo } from '../redux/slices/authSlice'
+import {  useNavigate } from 'react-router-dom'
 
 function Login() {
   const [values, setValues] = useState({
@@ -10,6 +11,7 @@ function Login() {
   })
   const [error, setError] = useState(false)
 
+  let navigate = useNavigate()
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
@@ -20,19 +22,18 @@ function Login() {
 
     try {
       const user = await onLogin(values);
-      console.log('User object:', user); // Check if user contains the expected data
+      console.log('User object:', user);
+      
+      const { id, username } = user;
+      
       
       dispatch(authenticateUser());
-      console.log('authenticateUser dispatched');
-  
-      const { id, username } = user;
-      console.log('Dispatching updateUserInfo with id:', id, 'and username:', username);
       dispatch(updateUserInfo({ id, username }));
   
-      localStorage.setItem('isAuth', true);
+      localStorage.setItem('isAuth', JSON.stringify(true));
       localStorage.setItem('id', id);
       localStorage.setItem('username', username );
-      // window.location.reload();
+      navigate('/')
 
     } catch (error) {
       console.log(error.response.data.errors[0].msg)

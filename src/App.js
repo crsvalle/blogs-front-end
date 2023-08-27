@@ -21,21 +21,26 @@
   import Comments from "./Components/Comments";
   import Results from "./Pages/Results";
   import Dashboard from "./Pages/Dashboard";
+import { useEffect } from "react";
 
   const PrivateRoutes = () => {
-    const { isAuth } = useSelector((state) => state.auth, []);
+    const { isAuth } = useSelector((state) => state.auth);
 
-    console.log(isAuth.isAuth)
   
-    return <>{isAuth.id? <Outlet /> : <Navigate to="/login" />}</>;
+    return <>{isAuth ? <Outlet /> : <Navigate to="/login" />}</>;
   };
   
   const RestrictedRoutes = () => {
-    const { isAuth } = useSelector((state) => state.auth, []);
+    const { isAuth } = useSelector((state) => state.auth);
   
-    return <>{!isAuth.id ? <Outlet /> : <Navigate to="/dashboard" />}</>;
+    return <>{!isAuth ? <Outlet /> : <Navigate to="/dashboard" />}</>;
   };
   function App() {
+    const { isAuth } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+      console.log(isAuth)
+    },[isAuth])
 
     return (
       <div className="">

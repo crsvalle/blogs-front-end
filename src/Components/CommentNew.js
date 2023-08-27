@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 function CommentNew({addComment, id}) {
     
-    const { isAuth} = useSelector((state) => state.auth.isAuth)
+    const { isAuth} = useSelector((state) => state.auth)
 
     let username; 
     const getUsernameFromLocalStorage = () => {
