@@ -21,13 +21,13 @@ function NavBar() {
   
   const logout = async () => {
     try {
-      await onLogout();
-  
+      
       dispatch(unauthenticateUser());
       localStorage.setItem('isAuth', JSON.stringify(false));
       localStorage.removeItem('id');
       localStorage.removeItem('username');
       window.location.reload();
+      await onLogout();
     } catch (error) {
       console.log(error.response);
     }
