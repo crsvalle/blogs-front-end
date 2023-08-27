@@ -16,7 +16,7 @@ function Comment({ comment, handleDelete }) {
        
         <div className="deletButton">
             <div></div>
-            {/* <button style={{margin:"auto"}} onClick={() => handleDelete(comment.id)}>delete</button> */}
+            <button style={{margin:"auto"}} onClick={() => handleDelete(comment.id)}>delete</button>
             <div></div>
         </div>
         </Grid>
