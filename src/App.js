@@ -26,7 +26,7 @@
     const { isAuth } = useSelector((state) => state.auth);
     console.log(isAuth)
   
-    return <>{isAuth.isAuth || !isAuth.username ? <Outlet /> : <Navigate to="/login" />}</>;
+    return <>{isAuth.isAuth || !isAuth.username || isAuth.id === null ? <Outlet /> : <Navigate to="/login" />}</>;
   };
   
   const RestrictedRoutes = () => {
