@@ -25,12 +25,13 @@ function NavBar() {
   
   const logout = async () => {
     localStorage.setItem('isAuth', JSON.stringify(false));
+    localStorage.removeItem('username')
+    localStorage.removeItem('id')
     try {
       await onLogout();
       
       dispatch(unauthenticateUser());
-      localStorage.removeItem('username')
-      localStorage.removeItem('id')
+
       navigate('/login')
     } catch (error) {
       console.log(error.response);
