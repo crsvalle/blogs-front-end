@@ -27,7 +27,7 @@
 
     console.log(isAuth)
   
-    return <>{isAuth ? <Outlet /> : <Navigate to="/login" />}</>;
+    return <>{isAuth.isAuth ? <Outlet /> : <Navigate to="/login" />}</>;
   };
   
   const RestrictedRoutes = () => {

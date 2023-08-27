@@ -36,8 +36,8 @@ export const authSlice = createSlice({
       },
       unauthenticateUser: (state) => {
         state.isAuth = false;
-        state.id = null; // Reset id to null
-        state.username = null; // Reset username to null
+        state.id = null;
+        state.username = null;
       },
       updateUserInfo: (state, action) => {
         const { id, username } = action.payload;
