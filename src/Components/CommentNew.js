@@ -11,7 +11,13 @@ function CommentNew({addComment, id}) {
         return localStorage.getItem('username') || 'No Username'; // Change 'username' to the actual key
     };
 
+    let userId;
+    const getUserIDFromLocalStorage = () => {
+      return localStorage.getItem('id') || 'null'; // Change 'id' to the actual key
+    };
+
     username = getUsernameFromLocalStorage()
+    userId = getUserIDFromLocalStorage()
 
   const dat = new Date()
   let currentDay = String(dat.getDate()).padStart(2,'0');
@@ -24,7 +30,8 @@ function CommentNew({addComment, id}) {
 
   
   const [comment, setComment] = useState({
-    blog_id: id, 
+    blog_id: id,
+    author_id: userId,
     name: username,
     content: '',
     date: currentTime,

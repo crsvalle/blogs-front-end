@@ -13,10 +13,10 @@ export async function onLogin(loginData) {
     try {
       const response = await axios.post(`${API}/users/login`, loginData);
       console.log(response.data)
-      const { id, username } = response.data; // Assuming the data structure is correct
+      const { id, username } = response.data;
       return { id, username };
     } catch (error) {
-      throw error; // Rethrow the error to handle it in the component
+      throw error; 
     }
   }
 

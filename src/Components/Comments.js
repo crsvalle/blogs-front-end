@@ -46,19 +46,19 @@ function Comments({id}) {
       .catch((c) => console.warn("catch", c));
   };
 
-//   const handleEdit = (updatedComment) => {
-//     axios
-//       .put(`${API}/blogs/${id}/comments/${updatedComment.id}`, updatedComment)
-//       .then((response) => {
-//         const copyCommentArray = [...comments];
-//         const indexUpdatedComment = copyCommentArray.findIndex((comment) => {
-//           return comment.id === updatedComment.id;
-//         });
-//         copyCommentArray[indexUpdatedComment] = response.data;
-//         setComments(copyCommentArray);
-//       })
-//       .catch((c) => console.warn("catch", c));
-//   };
+  const handleEdit = (updatedComment) => {
+    axios
+      .put(`${API}/blogs/${id}/comments/${updatedComment.id}`, updatedComment)
+      .then((response) => {
+        const copyCommentArray = [...comments];
+        const indexUpdatedComment = copyCommentArray.findIndex((comment) => {
+          return comment.id === updatedComment.id;
+        });
+        copyCommentArray[indexUpdatedComment] = response.data;
+        setComments(copyCommentArray);
+      })
+      .catch((c) => console.warn("catch", c));
+  };
 
   return (
     <section className="comments">
@@ -72,6 +72,7 @@ function Comments({id}) {
                 key={comment.id}
                 comment={comment}
                 handleDelete={handleDelete}
+                handleEdit={handleEdit}
             />
         ))}
 

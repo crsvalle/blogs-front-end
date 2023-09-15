@@ -45,9 +45,6 @@ function BlogInfo() {
 
     let body = parse(`${blog.body}`)
 
-    // console.log(userId)
-    // console.log(blog.author_id + '')
-    console.log(blog.author_id + '' === userId )
 
   return (
     <div className='infoPage'>
