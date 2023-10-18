@@ -8,6 +8,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 
 import "./Blog.css"
 import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function stripHtmlTags(html) {
     return html.replace(/<[^>]*>/g, ' ');
@@ -42,7 +43,7 @@ function Blog({blog}) {
                     {blog.name}
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                    {blog.author}
+                    <a href={`/user/${blog.author}`}>{blog.author}</a>
                 </Typography>
             <div className='text'>
                 <Typography className="desc" variant="caption" >
