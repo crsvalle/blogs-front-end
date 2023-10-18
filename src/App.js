@@ -27,7 +27,6 @@ import { Box } from "@mui/material";
   const PrivateRoutes = () => {
     const { isAuth } = useSelector((state) => state.auth);
 
-  
     return <>{isAuth ? <Outlet /> : <Navigate to="/login" />}</>;
   };
   
@@ -37,11 +36,6 @@ import { Box } from "@mui/material";
     return <>{!isAuth ? <Outlet /> : <Navigate to="/dashboard" />}</>;
   };
   function App() {
-    const { isAuth } = useSelector((state) => state.auth);
-
-    useEffect(() => {
-      console.log(isAuth)
-    },[isAuth])
 
     return (
       <Box className="">

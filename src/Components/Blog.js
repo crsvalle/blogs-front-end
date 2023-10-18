@@ -9,9 +9,13 @@ import ArticleIcon from '@mui/icons-material/Article';
 import "./Blog.css"
 import { Grid } from '@mui/material';
 
-import parse from 'html-react-parser';
+function stripHtmlTags(html) {
+    return html.replace(/<[^>]*>/g, ' ');
+  }
+
 function Blog({blog}) {
-    
+    const strippedBody = stripHtmlTags(blog.body || '');
+
   return (
     <Grid item xs={2} md={6} className='test'> 
     <CardActionArea component="a" href={`/blogs/${blog.id}`}>
@@ -42,7 +46,7 @@ function Blog({blog}) {
                 </Typography>
             <div className='text'>
                 <Typography className="desc" variant="caption" >
-                    {blog.body}
+                    {strippedBody}
                 </Typography>
             </div>
             <Typography variant="subtitle2" color="primary">

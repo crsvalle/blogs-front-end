@@ -23,7 +23,6 @@ function Login() {
 
     try {
       const user = await onLogin(values);
-      console.log('User object:', user);
       
       const { id, username } = user;
       

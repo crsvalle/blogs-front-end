@@ -14,8 +14,6 @@ function NavBar() {
 
   const { isAuth } = useSelector((state) => state.auth);
   const { id } = useSelector((state) => state.auth);
-  console.log('isAuth from Redux:', isAuth);
-  console.log('id from redux: ', id)
 
 
   const dispatch = useDispatch()
