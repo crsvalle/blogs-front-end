@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import './CommentNewForm.css'
 import { useSelector } from "react-redux";
 
@@ -10,6 +10,7 @@ function CommentNew({addComment, id}) {
 
   const username = localStorage.getItem('username') || 'No Username';
   const userId = localStorage.getItem('id') || '';
+  
 
   const dat = new Date()
   let currentDay = String(dat.getDate()).padStart(2, '0');
@@ -26,24 +27,18 @@ function CommentNew({addComment, id}) {
   
   const [comment, setComment] = useState({
     blog_id: id,
-    author_id: userId, // userId is now safely set as the author_id
+    author_id: userId, 
     name: username,
     content: '',
     date: currentTime,
   })
   
-  console.log(comment.author_id)
-  useEffect(() => {
-    setComment((prevComment) => ({
-      ...prevComment,
-      author_id: userId,
-    }));
-  }, [userId]);
 
   function clearForm(){
     setComment({
         blog_id: id, 
         name: username,
+        author_id:userId,
         content: '',
         date: currentTime,
     })
