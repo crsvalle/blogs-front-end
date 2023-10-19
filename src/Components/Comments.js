@@ -9,13 +9,23 @@ const API = process.env.REACT_APP_API_URL;
 function Comments({id}) {
   const [comments, setComments] = useState([]);
 
+  function parseDate(dateStr) {
+    const adjustedDateStr = dateStr.replace('+', ' ');
+    return new Date(adjustedDateStr);
+  }
 
   useEffect(() => {
     axios.get(`${API}/blogs/${id}/comments`).then((response) => {
-      console.log(id);
-      setComments(response.data);
+      const sortedComments = response.data.sort((a, b) => {
+        const dateA = parseDate(a.date);
+        const dateB = parseDate(b.date);
+        return dateB - dateA; 
+      });
+      setComments(sortedComments);
     });
   }, [id]);
+  
+
 
   const addComment = (newComment) => {
     axios

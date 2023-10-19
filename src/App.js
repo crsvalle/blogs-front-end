@@ -21,7 +21,6 @@
   import Comments from "./Components/Comments";
   import Results from "./Pages/Results";
   import Dashboard from "./Pages/Dashboard";
-import { useEffect } from "react";
 import { Box } from "@mui/material";
 
   const PrivateRoutes = () => {

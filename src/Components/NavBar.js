@@ -13,7 +13,7 @@ function NavBar() {
   const open = Boolean(anchorEle);
 
   const { isAuth } = useSelector((state) => state.auth);
-  const { id } = useSelector((state) => state.auth);
+  // const { id } = useSelector((state) => state.auth);
 
 
   const dispatch = useDispatch()
