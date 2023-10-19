@@ -17,12 +17,10 @@
         return null;
       }
     
-      const parts = dateStr.split(' +');
-      
-      if (parts.length === 2) {
-
-        return parts[0] + " +-" + parts[1];
-      } else if (parts.length === 1) {
+      const parts = dateStr.split(/\s+/);
+    
+      if (parts.length === 1) {
+        // Handle the case without time
         const dateParts = parts[0].split('-');
         if (dateParts.length !== 3) {
           console.error('Invalid date format:', dateStr);
@@ -32,27 +30,55 @@
         const year = dateParts[2];
         const month = dateParts[0].padStart(2, '0');
         const day = dateParts[1].padStart(2, '0');
-
         const timePart = "00:00:00";
     
-        return `${month}-${day}-${year} +-${timePart}`;
+        return `${month}-${day}-${year} ${timePart}`;
+      } else if (parts.length === 2) {
+        // Handle the case with time
+        const datePart = parts[0];
+        const timePart = parts[1];
+    
+        const dateParts = datePart.split('-');
+        if (dateParts.length !== 3) {
+          console.error('Invalid date format:', dateStr);
+          return null;
+        }
+    
+        const year = dateParts[2];
+        const month = dateParts[0].padStart(2, '0');
+        const day = dateParts[1].padStart(2, '0');
+    
+        return `${month}-${day}-${year} ${timePart}`;
       } else {
         console.error('Invalid date format:', dateStr);
         return null;
       }
     }
+    
   
 
     useEffect(() => {
-      axios.get(`${API}/blogs/${id}/comments`).then((response) => {
-        const sortedComments = response.data.sort((a, b) => {
-          const dateA = parseDate(a.date);
-          const dateB = parseDate(b.date);
-          return dateB.localeCompare(dateA); // Use localeCompare for string comparison
-        });
-        setComments(sortedComments);
-      });
+      async function fetchComments() {
+        try {
+          const response = await axios.get(`${API}/blogs/${id}/comments`);
+          const commentsWithParsedDate = response.data.map((comment) => ({
+            ...comment,
+            parsedDate: parseDate(comment.date),
+          }));
+    
+          const sortedComments = commentsWithParsedDate.sort((a, b) =>
+            b.parsedDate.localeCompare(a.parsedDate)
+          );
+    
+          setComments(sortedComments);
+        } catch (error) {
+          console.error("Error fetching comments:", error);
+        }
+      }
+    
+      fetchComments();
     }, [id]);
+    
     
 
 

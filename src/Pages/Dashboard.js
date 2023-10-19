@@ -35,7 +35,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     protectedInfo()
-  }, [])
+  }, [protectedInfo])
 
   return loading ? (
     <div>

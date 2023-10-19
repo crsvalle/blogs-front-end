@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './CommentNewForm.css'
 import { useSelector } from "react-redux";
 
@@ -7,36 +7,38 @@ function CommentNew({addComment, id}) {
     
     const { isAuth} = useSelector((state) => state.auth)
 
-    let username; 
-    const getUsernameFromLocalStorage = () => {
-        return localStorage.getItem('username') || 'No Username'; // Change 'username' to the actual key
-    };
 
-    let userId;
-    const getUserIDFromLocalStorage = () => {
-      return localStorage.getItem('id') || 'null'; // Change 'id' to the actual key
-    };
-
-    username = getUsernameFromLocalStorage()
-    userId = getUserIDFromLocalStorage()
+  const username = localStorage.getItem('username') || 'No Username';
+  const userId = localStorage.getItem('id') || '';
 
   const dat = new Date()
-  let currentDay = String(dat.getDate()).padStart(2,'0');
-  let currentMonth = String(dat.getMonth() +1).padStart(2,"0");
+  let currentDay = String(dat.getDate()).padStart(2, '0');
+  let currentMonth = String(dat.getMonth() + 1).padStart(2, '0');
   let currentYear = dat.getFullYear();
-  let time = (dat.getHours() - 12) + ":" + dat.getMinutes() + ":" + dat.getSeconds();
-  let currentDate = `${currentMonth}-${currentDay}-${currentYear}`  
+  let hours = dat.getHours();
 
-  let currentTime = `${currentDate}  +${time}`
+
+  hours = hours % 12 || 12; 
+  let time = `${hours}:${dat.getMinutes()}:${dat.getSeconds()}`;
+  let currentDate = `${currentMonth}-${currentDay}-${currentYear}`;
+  let currentTime = `${currentDate} ${time}`;
 
   
   const [comment, setComment] = useState({
     blog_id: id,
-    author_id: userId,
+    author_id: userId, // userId is now safely set as the author_id
     name: username,
     content: '',
     date: currentTime,
   })
+  
+  console.log(comment.author_id)
+  useEffect(() => {
+    setComment((prevComment) => ({
+      ...prevComment,
+      author_id: userId,
+    }));
+  }, [userId]);
 
   function clearForm(){
     setComment({
