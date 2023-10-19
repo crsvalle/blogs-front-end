@@ -2,6 +2,7 @@ import { useState } from "react";
 import './CommentNewForm.css'
 import { useSelector } from "react-redux";
 
+
 function CommentNew({addComment, id}) {
     
     const { isAuth} = useSelector((state) => state.auth)
