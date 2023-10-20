@@ -3,13 +3,15 @@
   import Comment from "./Comment";
   import CommentNew from "./CommentNew";
   import { Paper } from "@mui/material";
+  import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 
 
   const API = process.env.REACT_APP_API_URL;
 
   function Comments({id}) {
     const [comments, setComments] = useState([]);
-
+const [parent, enableAnimations] = useAutoAnimate()
 
     function parseDate(dateStr) {
       if (!dateStr || typeof dateStr !== 'string') {
@@ -131,7 +133,7 @@
 
         <CommentNew key={id} id={id} addComment={addComment}>
         </CommentNew>
-        <Paper style={{}}>
+        <Paper style={{}} ref={parent}>
           {comments.map((comment) => (
               <Comment
                   key={comment.id}
