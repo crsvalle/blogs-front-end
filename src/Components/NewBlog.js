@@ -2,12 +2,12 @@ import { Button, FormControl, FormControlLabel, FormLabel, Input, Radio, RadioGr
 import axios from "axios";
 import {  useState } from "react";
 import {  useNavigate } from "react-router-dom";
-
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 
 import './NewBlog.css'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
-
+import toast from 'react-hot-toast';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -18,19 +18,20 @@ function NewBlog() {
     return localStorage.getItem('username') || 'null'; // Change 'username' to the actual key
 };
 
-    const getUserIDFromLocalStorage = () => {
-      return localStorage.getItem('id') || 'null'; // Change 'id' to the actual key
-    };
+  const getUserIDFromLocalStorage = () => {
+    return localStorage.getItem('id') || 'null'; // Change 'id' to the actual key
+  };
+  
 
-let username = getUsernameFromLocalStorage()
-let authorId = getUserIDFromLocalStorage()
-console.log(authorId)
+  let username = getUsernameFromLocalStorage()
+  let authorId = getUserIDFromLocalStorage()
 
   const dat = new Date()
   let currentDay = String(dat.getDate()).padStart(2,'0');
   let currentMonth = String(dat.getMonth() +1).padStart(2,"0");
   let currentYear = dat.getFullYear();
   let currentDate = `${currentMonth}-${currentDay}-${currentYear}`
+  
 
 
   const [blog, setBlog] = useState({
@@ -46,12 +47,41 @@ console.log(authorId)
 
   const addBlog = (newBlog) => {
     const authorId = getUserIDFromLocalStorage();
-    console.log(authorId)
     newBlog.author_id = authorId;
     axios
       .post(`${API}/blogs`, newBlog)
       .then(
         () => {
+          toast.success("Post Uploaded", {duration: 4000,
+            position: 'top-center',
+          
+            // Styling
+            style: {
+              background: 'green',
+              color: 'white'
+            },
+            className: '',
+          
+            // Custom Icon
+            icon: <CheckCircleOutlinedIcon
+              style={{
+                color: 'white', 
+                backgroundColor: 'green', 
+                borderRadius: '50%',   
+                padding: '8px',       
+              }}
+          />,
+          
+            // Change colors of success/error/loading icon
+            iconTheme: {
+              primary: '#000',
+              secondary: '#fff',
+            },
+            ariaProps: {
+              role: 'status',
+              'aria-live': 'polite',
+            },
+          })
           navigate(`/blogs`);
         },
         (error) => console.error(error)

@@ -1,6 +1,8 @@
   // DEPENDENCIES
   import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
   import { useSelector } from 'react-redux'
+  import { Toaster } from 'react-hot-toast';
+
 
   // PAGES
   import Edit from "./Pages/Edit";
@@ -38,6 +40,7 @@ import { Box } from "@mui/material";
 
     return (
       <Box className="">
+        <Toaster />
         <Router>
           <NavBar />
           <main className="app" >
