@@ -11,7 +11,7 @@
 
   function Comments({id}) {
     const [comments, setComments] = useState([]);
-const [parent, enableAnimations] = useAutoAnimate()
+const [parent] = useAutoAnimate()
 
     function parseDate(dateStr) {
       if (!dateStr || typeof dateStr !== 'string') {

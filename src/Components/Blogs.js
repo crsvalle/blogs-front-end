@@ -22,15 +22,16 @@ function Blogs() {
     const [copy, setCopy] = useState([])
     const [bool, setBool] = useState(0)
 
-    useEffect(()=>{
+    useEffect(() => {
         axios
-            .get(`${API}/blogs`)
-            .then((response) =>{
-            setBlogs(response.data)
-            setCopy(response.data)})
-            .catch((e) => console.error("catch", e));
-    },[]);
-
+          .get(`${API}/blogs`)
+          .then((response) => {
+            setBlogs(response.data);
+            setCopy([...response.data].sort((a, b) => b.id - a.id));
+          })
+          .catch((e) => console.error("catch", e));
+      }, []);
+      
 
     // setCopy([...copy.map((e) => e).sort((a, b) => a.id - b.id)]);
     
