@@ -13,12 +13,17 @@ function stripHtmlTags(html) {
     return html.replace(/<[^>]*>/g, ' ');
   }
 
-    function Blog({blog}) {
-        const strippedBody = stripHtmlTags(blog.body || '');
+  
+  function Blog({blog}) {
+      const strippedBody = stripHtmlTags(blog.body || '');
+      
+      const handleCardClick = () => {
+        window.location.href = `/blogs/${blog.id}`;
+      };
 
     return (
         <Grid item xs={2} md={6} className='test'> 
-        <CardActionArea component="a" href={`/blogs/${blog.id}`}>
+        <CardActionArea onClick={handleCardClick}>
             <Card  className="card" sx={{ display: 'flex', minHeight:90, maxHeight:90}}>
                 <CardContent>
                     {!blog.image ? 
